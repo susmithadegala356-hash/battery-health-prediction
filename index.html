@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EV Battery Health Prediction</title>
+  </head>
+  <body>
+    <h1>EV Battery Health Prediction</h1>
+    <p>Battery Capacity (mAh)</p>
+    <input type="number" id="capacity">
+    <p>Cycle Count</p>
+    <input type="number" id="cycles">
+    <br><br>
+    <button onclick="predict()">predict</button>button>
+    <h2 id="result"></h2>
+    <script>
+      function predict() {
+        let capacity=parseFloat(document.getElementById("capacity").value);
+      let cycles = parseFloat(document.getElementById("cycles").value);
+      let soh= (capacity / 5000) * 100 - (cycles * 0.02);
+      if (soh < 0) soh = 0;
+      document.getElementById("result").innerHTML =
+        "Battery Health (SOH): " + soh.toFixed(2) + "%";
+      }
+    </script>
+  </body>
+</html>
